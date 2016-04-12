@@ -25,6 +25,8 @@ open class PieChartView: PieRadarChartViewBase
     /// flag indicating if entry labels should be drawn or not
     fileprivate var _drawEntryLabelsEnabled = true
     
+    private var _drawXLabelsMinimumAngle: Double = 0
+    
     /// array that holds the width of each pie-slice in degrees
     fileprivate var _drawAngles = [CGFloat]()
     
@@ -585,6 +587,19 @@ open class PieChartView: PieRadarChartViewBase
         set
         {
             _drawEntryLabelsEnabled = newValue
+            setNeedsDisplay()
+        }
+    }
+    
+    public var drawSliceTextMinimumAngle: Double
+    {
+        get
+        {
+            return _drawXLabelsMinimumAngle
+        }
+        set
+        {
+            _drawXLabelsMinimumAngle = newValue
             setNeedsDisplay()
         }
     }

@@ -33,6 +33,7 @@
     self.options = @[
                      @{@"key": @"toggleValues", @"label": @"Toggle Y-Values"},
                      @{@"key": @"toggleXValues", @"label": @"Toggle X-Values"},
+                     @{@"key": @"toggleXValuesMinimumAngle", @"label": @"Toggle X-Values Minimum Angle"},
                      @{@"key": @"togglePercent", @"label": @"Toggle Percent"},
                      @{@"key": @"toggleHole", @"label": @"Toggle Hole"},
                      @{@"key": @"toggleIcons", @"label": @"Toggle Icons"},
@@ -48,6 +49,7 @@
     [self setupPieChartView:_chartView];
     
     _chartView.delegate = self;
+    _chartView.drawSliceTextMinimumAngle = 20;
     
     ChartLegend *l = _chartView.legend;
     l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
@@ -138,6 +140,17 @@
         _chartView.drawSliceTextEnabled = !_chartView.isDrawSliceTextEnabled;
         
         [_chartView setNeedsDisplay];
+        return;
+    }
+    
+    if ([key isEqualToString:@"toggleXValuesMinimumAngle"])
+    {
+        if (_chartView.drawSliceTextMinimumAngle == 0){
+            _chartView.drawSliceTextMinimumAngle = 20;
+        } else {
+            _chartView.drawSliceTextMinimumAngle = 0;
+        }
+        
         return;
     }
     
