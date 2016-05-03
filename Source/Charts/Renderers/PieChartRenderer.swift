@@ -359,10 +359,10 @@ open class PieChartRenderer: DataRenderer
                 let sliceXBase = cos(transformedAngle * ChartUtils.Math.FDEG2RAD)
                 let sliceYBase = sin(transformedAngle * ChartUtils.Math.FDEG2RAD)
                 
-                let drawXOutside = Double(sliceAngle) > drawSliceTextMinimumAngle && drawEntryLabels && xValuePosition == .outsideSlice
-                let drawYOutside = Double(sliceAngle) > drawSliceTextMinimumAngle && drawValues && yValuePosition == .outsideSlice
-                let drawXInside = Double(sliceAngle) > drawSliceTextMinimumAngle && drawEntryLabels && xValuePosition == .insideSlice
-                let drawYInside = Double(sliceAngle) > drawSliceTextMinimumAngle && drawValues && yValuePosition == .insideSlice
+                let drawXOutside = sliceAngle > drawSliceTextMinimumAngle && drawEntryLabels && xValuePosition == .outsideSlice
+                let drawYOutside = sliceAngle > drawSliceTextMinimumAngle && drawValues && yValuePosition == .outsideSlice
+                let drawXInside = sliceAngle > drawSliceTextMinimumAngle && drawEntryLabels && xValuePosition == .insideSlice
+                let drawYInside = sliceAngle > drawSliceTextMinimumAngle && drawValues && yValuePosition == .insideSlice
                 
                 let valueTextColor = dataSet.valueTextColorAt(j)
                 let entryLabelColor = dataSet.entryLabelColor
